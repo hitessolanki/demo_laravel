@@ -13,16 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 // Route::get("/post","PostController@index");
-Route::post("/post","PostController@store");
-Route::put("/post","PostController@update");
-Route::delete("/post","PostController@delete");
-Route::get("/post","PostController@show");
+Route::post("/user","UserController@store");
+Route::put("/user","UserController@update");
+Route::delete("/user","UserController@delete");
+Route::get("/user","UserController@show");
 Route::prefix('v1')->group(function () {
-	Route::apiResource('post','PostController');
+	Route::apiResource('user','UserController');
 });
 
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::apiResource('post','PostController');
+    Route::apiResource('user','UserController');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
